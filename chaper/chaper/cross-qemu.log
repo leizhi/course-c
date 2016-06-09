@@ -1,0 +1,38 @@
+crosstool-ng
+
+$ tar xJf linux-3.11.tar.xz
+# cd linux-3.11 
+# make ARCH=arm CROSS_COMPILE=arm-unknown-linux-gnueabi- vexpress_defconfig
+# make ARCH=arm CROSS_COMPILE=arm-unknown-linux-gnueabi- zImage modules
+
+qemu-system-arm -M vexpress-a9 -m 512M -kernel zImage -nographic -append "console=ttyAMA0"
+qemu-system-arm -M vexpress-a9 -m 512M -kernel zImage -nographic -append "root=/dev/mmcblk0  console=ttyAMA0" -sd a9rootfs.ext3
+
+make ARCH=arm CROSS_COMPILE=arm-unknown-linux-gnueabi- all -j8 uImage 
+
+编译并制作启动镜像:
+$ arm-unknown-linux-gnueabi-gcc -o init init.c -static
+$ echo init |cpio -o --format=newc > initramfs
+1280 blocks
+$ file initramfs 
+initramfs: ASCII cpio archive (SVR4 with no CRC)
+
+qemu-system-arm -M versatilepb -kernel zImage  -initrd initramfs -serial stdio -append "console=ttyAMA0"
+
+如果我们改变console变量为ttyAMA0, 将在启动qemu-system-arm的本终端上打印出qemu的输出。
+
+#U-BOOT 编译
+make distclean
+make ARCH=arm CROSS_COMPILE=arm-unknown-linux-gnueabi- vexpress_ca9x4_defconfig
+make ARCH=arm CROSS_COMPILE=arm-unknown-linux-gnueabi- -s
+qemu-system-arm -M vexpress-a9 -nographic -kernel u-boot
+
+//crosstool-ng 安装
+mkdir /a/directory/to/build/your/toolchain
+cd /a/directory/to/build/your/toolchain
+ct-ng help
+ct-ng list-samples
+ct-ng show-arm-unknown-linux-gnueabi
+//crosstool-ng
+ct-ng arm-unknown-linux-gnueabi
+ct-ng build

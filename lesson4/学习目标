@@ -1,0 +1,34 @@
+C语言中的 结构体，联合,枚举，位域
+
+一、结构体类型
+struct
+
+typedef struct
+
+如何访问结构体:变量用点号，指针(地址)用->
+
+二、联合
+
+union
+
+typedef union
+
+FF FF FF FF
+
+特点:只有最后一个赋值的成员数据有效(通常情况下)
+
+三、枚举
+
+enum
+
+typedef enum
+
+四、位域
+
+struct {:}
+
+typedef struct
+
+今天的作业:
+熟练掌握四种类型的变量访问和指针访问。
+Bye

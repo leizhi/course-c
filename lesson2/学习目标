@@ -1,0 +1,39 @@
+上节课 HelloWorld!
+
+本节课:
+0.引入头文件 目前只介绍这几个
+	stdio.h
+	stdlib.h
+	string.h
+1.介绍语法
+	for
+	while
+	do {} while();
+	if()
+	if() else if(){}
+	if()else()
+	swith()
+2.数据类型
+	int long long long
+	float double
+	char
+	char[] int[] 一纬数组
+	char[][] int[][]	二维数组
+	n纬数组
+3.变量类型
+	static
+	const 
+	const static
+3.寻找每一句话，每一个变量在电脑的什么地方?
+	C语言内存结构图
+总结：单文件的C语言开发
+
+
+Example.c
+我们学习了整形及其相关的基本语句。
+
+习题:
+1.完成语句与语句之间的嵌套使用
+2.求前n项的和，并使用long类型
+
+next time see you1
