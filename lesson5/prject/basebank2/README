@@ -1,0 +1,13 @@
+#自动构建防范
+touch Makefile.am
+autoscan
+vi configure.scan
+AC_INIT(basebank, 1.0, leizhifesker@gmail.com)
+AC_CONFIG_SRCDIR([inclue/server.h])
+AC_CONFIG_HEADERS([config.h])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign])
+aclocal
+autoconf
+autoheader
+automake --add-missing
+./configure
